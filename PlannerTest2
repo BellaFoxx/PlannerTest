@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Daily Planner</title>
+  <style>
+    #container {
+      max-width: 800px; /* Set maximum width */
+      margin: 0 auto; /* Center the container */
+      padding: 20px; /* Optional: Add padding for spacing */
+}
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    .planner-section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    @media (max-width: 600px) {
+      table, th, td {
+        display: block;
+        width: 100%;
+      }
+
+      th, td {
+        text-align: right;
+      }
+
+      th::before {
+        float: left;
+        font-weight: bold;
+      }
+
+      td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Your content here -->
+
+  <div class="planner-section">
+    <h2>Top Priorities for Tomorrow</h2>
+    <table id="priorityTable">
+      <tr>
+        <th>Priority</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td data-label="Priority">1</td>
+        <td data-label="Description"><input type="text" placeholder="Enter description here"></td>
+      </tr>
+      <tr>
+        <td data-label="Priority">2</td>
+        <td data-label="Description"><input type="text" placeholder="Enter description here"></td>
+      </tr>
+      <tr>
+        <td data-label="Priority">3</td>
+        <td data-label="Description"><input type="text" placeholder="Enter description here"></td>
+      </tr>
+    </table>
+    <div style="display: flex;">
+        <button onclick="addRow('priorityTable')" style="border: none; background-color: #fff; margin-right: auto; font-size: 11px; margin-top: 4px;">Add Priority</button>
+        
+    <button onclick="removeRow('priorityTable')" style="border: none; background-color: #fff; margin-left: auto; font-size: 11px; margin-top: 4px;">Remove</button>
+    </div>
+</div>
+
+  <div class="planner-section">
+    <h2>Tomorrow's Goals</h2>
+    <table id="goalsTable">
+      <tr>
+        <th>Goal</th>
+
+      </tr>
+      <tr>
+        <td data-label="Goal"><input type="text" placeholder="Enter goal here"></td>
+        
+      </tr>
+      <tr>
+        <td data-label="Goal"><input type="text" placeholder="Enter goal here"></td>
+    
+      </tr>
+    </table>
+    <div style="display: flex;">
+        <button onclick="addRow('goalsTable')" style="border: none; background-color: #fff; margin-right: auto; font-size: 11px; margin-top: 4px;">Add Priority</button>
+        
+    <button onclick="removeRow('goalsTable')" style="border: none; background-color: #fff; margin-left: auto; font-size: 11px; margin-top: 4px;">Remove</button>
+    </div>
+  </div>
+
+  <div class="planner-section">
+    <h2>Focus Areas</h2>
+    <table id="focusTable">
+      <tr>
+        <th>Time of Day</th>
+        <th>Focus</th>
+      </tr>
+      <tr>
+        <td data-label="Time of Day">Morning</td>
+        <td data-label="Focus"><input type="text" placeholder="Enter morning focus"></td>
+      </tr>
+      <tr>
+        <td data-label="Time of Day">Afternoon</td>
+        <td data-label="Focus"><input type="text" placeholder="Enter afternoon focus"></td>
+      </tr>
+    </table>
+    <div style="display: flex;">
+        <button onclick="addRow('focusTable')" style="border: none; background-color: #fff; margin-right: auto; font-size: 11px; margin-top: 4px;">Add Priority</button>
+        
+    <button onclick="removeRow('focusTable')" style="border: none; background-color: #fff; margin-left: auto; font-size: 11px; margin-top: 4px;">Remove</button>
+    </div>
+  </div>
+
+  <div class="planner-section">
+    <h2 style="margin-bottom: 5px;">Morning Kickstart Notes</h2>
+    <h5 style="margin-top: 0;">(Jot down any reminders for quick morning reference)</h5>
+    <table id="notesTable">
+      <tr><style></style>
+        <th>Notes</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td data-label="Notes">1</td>
+        <td><textarea placeholder="Enter notes here"></textarea></td>
+      </tr>
+      <tr>
+        <td data-label="Notes">2</td>
+        <td><textarea placeholder="Enter notes here"></textarea></td>
+      </tr>
+      <tr>
+        <td data-label="Notes">3</td>
+        <td><textarea placeholder="Enter notes here"></textarea></td>
+      </tr>
+    </table>
+    <div style="display: flex;">
+        <button onclick="addRow('notesTable')" style="border: none; background-color: #fff; margin-right: auto; font-size: 11px; margin-top: 4px;">Add Note</button>
+        
+    <button onclick="removeRow('notesTable')" style="border: none; background-color: #fff; margin-left: auto; font-size: 11px; margin-top: 4px;">Remove</button>
+    </div>
+  </div>
+
+  <script>
+function addRow(tableId) {
+  const table = document.getElementById(tableId); // Select the correct table by ID
+  const newRow = table.insertRow(); // Insert a new row at the end of the table
+  const rowCount = table.rows.length - 1; // Calculate row number (excluding header)
+
+  if (tableId === 'priorityTable' || tableId === 'notesTable') {
+    // For Priority and Notes tables, add a sequential number
+    const cell1 = newRow.insertCell(0);
+    cell1.innerText = rowCount; // Set cell to row number
+    
+    const cell2 = newRow.insertCell(1);
+    if (tableId === 'priorityTable') {
+      cell2.innerHTML = '<input type="text" placeholder="Enter description here">';
+    } else if (tableId === 'notesTable') {
+      cell2.colSpan = 2; // Span across both columns for notes textarea
+      cell2.innerHTML = '<textarea placeholder="Enter notes here"></textarea>';
+    }
+  } 
+
+  else if (tableId === 'goalsTable') {
+    // For Goals table, just add a new input field
+    const cell1 = newRow.insertCell(0);
+    cell1.innerHTML = '<input type="text" placeholder="Enter goal here">';
+    }
+
+  
+  else if (tableId === 'focusTable') {
+    // For Focus table, add "Other" in each new row’s first cell
+    const cell1 = newRow.insertCell(0);
+    const cell2 = newRow.insertCell(1);
+    cell1.innerText = 'Other'; // Set cell text to "Other"
+    cell2.innerHTML = '<input type="text" placeholder="Enter focus here">';
+  }
+}
+  
+function removeRow(tableId) {
+  const table = document.getElementById(tableId);
+  const rowCount = table.rows.length;
+  
+  // Check if there's more than one row (e.g., keep headers intact)
+  if (rowCount > 1) {
+    table.deleteRow(rowCount - 1); // Delete the last row
+  }
+}
+  </script>
+
+</body>
+</html>
